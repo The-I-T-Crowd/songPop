@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
   });
 });
 
-app.get('/usersConnected', (req, res) => {
+app.get('/usersConnected', (req, res) => { 
   res.json([ ...usersConnected.keys() ]);
 });
 
