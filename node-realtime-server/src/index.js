@@ -8,6 +8,44 @@ const io = require('socket.io')(httpServer, {
   origins: ['*']
 });
 
+// BOT setup
+require('dotenv').config();
+const Discord = require('discord.js');
+const bot = new Discord.Client();
+
+const TOKEN = process.env.TOKEN;
+const CHANNEL_ID_VOICE = process.env.CHANNEL_ID_VOICE;
+const CHANNEL_ID_TEXT = process.env.CHANNEL_ID_TEXT;
+let voiceChannel;
+let textChannel;
+
+bot.login(TOKEN);
+
+bot.on('ready', () => {
+  voiceChannel = bot.channels.filter(channel => channel.name === CHANNEL_ID_VOICE).values().next().value;
+  textChannel = bot.channels.filter(channel => channel.name === CHANNEL_ID_TEXT).values().next().value;
+
+  // textChannel.send('hi')
+  muteAllPlayers(false);
+  console.info(`Logged in as ${bot.user.tag}!`);
+  createServer();
+});
+
+function muteAllPlayers(shouldMute) {
+  if (!voiceChannel) {
+    console.error('no voice channel found');
+  } else {
+    const currentChannelMembers = [ ...voiceChannel.members.values() ];
+    currentChannelMembers.forEach(member => {
+      // member.
+      console.error(member);
+      member.setMute(shouldMute);
+    });
+  }
+
+}
+// 
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -120,17 +158,19 @@ io.on('connection', (socket) => {
 
 });
 
-httpServer.listen(3000, () => {
-  console.log('websocket listening on *:3000');
-});
-
-app.listen(3001, () => {
-  console.log('REST listening on *:3001');
-})
-
-function getByValue(map, searchValue) {
-  for (let [key, value] of map.entries()) {
-    if (value === searchValue)
-      return key;
+function createServer() {
+  httpServer.listen(3000, () => {
+    console.log('websocket listening on *:3000');
+  });
+  
+  app.listen(3001, () => {
+    console.log('REST listening on *:3001');
+  })
+  
+  function getByValue(map, searchValue) {
+    for (let [key, value] of map.entries()) {
+      if (value === searchValue)
+        return key;
+    }
   }
 }
