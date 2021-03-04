@@ -1,0 +1,10 @@
+:host {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-card-footer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}

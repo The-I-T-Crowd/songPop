@@ -1,0 +1,22 @@
+<mat-toolbar class="flex"  color="accent">
+    <span>Stop the bus</span>
+
+    <span *ngIf="user">
+        Welcome {{user.name}}
+        <a (click)="leave()">
+           <u> (leave) </u>
+        </a>
+    </span>
+    
+    <div>
+        <button md-raised-button
+            *ngIf="isConnected"
+            color="green"
+            class="btn-w-md ml-3 green">
+        </button>
+        <button md-raised-button
+            *ngIf="!isConnected"
+            class="btn-w-md ml-3 red">
+        </button>
+    </div>
+</mat-toolbar>

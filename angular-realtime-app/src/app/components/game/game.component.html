@@ -1,0 +1,21 @@
+<div class="container-host">
+    <div class="category-header">
+        <div class="container flex" *ngIf="waitingForGameToStart">
+            <button (click)="startGame()" *ngIf="isAdmin()"> START GAME </button>
+            <span *ngIf="!isAdmin()">Still waiting for game to start</span>
+        </div>
+        <div class="container flex" *ngIf="waitingForRoundToStart">
+            <button (click)="startRound()" *ngIf="isAdmin()"> START ROUND </button>
+            <span *ngIf="!isAdmin()">Waiting for round to start</span>
+        </div>
+    </div>
+
+    <div class="category-body">
+        <div class="container">
+            <div class="row space-between" *ngIf="roundInProgress">
+                ROUND IN PROGRESS: MUSIC CLASSICAL
+                waiting for podge's internet to catch up . . . 
+            </div>
+        </div>
+    </div>
+</div>

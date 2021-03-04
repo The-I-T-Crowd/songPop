@@ -1,0 +1,19 @@
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    height: 40px;
+    width: 40px;
+}
+
+.green {
+    background-color: lawngreen;
+    border: lawngreen;
+}
+
+.red {
+    background-color: darkred;
+    border: darkred;
+}

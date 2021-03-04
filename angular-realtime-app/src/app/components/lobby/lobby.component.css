@@ -1,0 +1,17 @@
+
+.container-host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #B5DBF2;
+  height: calc(100% - 164px);
+}
+
+button {
+  margin: 10px;
+}
+
+create-category-form {
+  height: 500px;
+}

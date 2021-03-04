@@ -1,0 +1,13 @@
+<div class="container-host bgimg">
+    <div *ngIf="!admin">
+        <span>No admin exists</span>
+        <button mat-raised-button (click)="requestAdmin()">Become admin</button>
+    </div>
+    <div *ngIf="admin && user.name !== admin">
+        admin: {{ admin }}
+        (please wait for game to start)
+    </div>
+    <div *ngIf="admin && user.name === admin">
+        <create-category-form></create-category-form>
+    </div>
+</div>
