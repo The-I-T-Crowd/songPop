@@ -26,8 +26,9 @@ client.login(TOKEN);
 client.on('ready', () => {
   voiceChannel = client.channels.resolve(CHANNEL_ID_VOICE);
   textChannel = client.channels.resolve(CHANNEL_ID_TEXT);
+  console.log('CHANNEL_ID_VOICE', CHANNEL_ID_VOICE)
 
-  // textChannel.send('hi')
+  textChannel.send('started, connected')
   // muteAllPlayers(true);
   sendSong();
   console.info(`Logged in as ${client.user.tag}!`);
